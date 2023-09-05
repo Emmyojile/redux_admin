@@ -2,8 +2,14 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+
+  // const cartProducts = useSelector((state) => state.cart);
+  // const uniqueProductCount = Object.keys(cartProducts).length;
+  
+  const cartProducts = useSelector(state => state.cart)
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -22,7 +28,8 @@ const NavBar = () => {
             </Nav>
             <Navbar.Text>
             <Nav.Link to="/cart" as={Link}>
-                My Bag 0
+                My Bag {cartProducts.length}
+                {/* My Bag {uniqueProductCount} */}
               </Nav.Link>
             </Navbar.Text>
           </Navbar.Collapse>
